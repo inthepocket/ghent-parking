@@ -1,3 +1,13 @@
 import data from '../../data/parkings.json';
+import { PARKINGS_CHANGED } from '../actions/types';
 
-export default () => data;
+const INITIAL_STATE = data.parkings;
+
+export default function ParkingReducer(state = INITIAL_STATE, action) {
+  switch (action.type) {
+    case PARKINGS_CHANGED:
+      return action.payload.parkings;
+    default:
+      return state;
+  }
+}

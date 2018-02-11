@@ -1,38 +1,48 @@
-import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { CardItem } from './common';
+import React from 'react';
+import { TouchableWithoutFeedback, View, Text, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
 
-class ParkingListItem extends Component {
-
-  render() {
-    const { container, titleStyle, availableStyle } = styles;
-    const { name, parkingStatus } = this.props.parking;
-
-    return (
-      <CardItem style={container}>
-        <Text style={titleStyle}>
-          {name}
-        </Text>
-        <Text style={availableStyle}>
-          {parkingStatus.availableCapacity}
-        </Text>
-      </CardItem>
-    );
-  }
-}
+import ParkingIndicator from './ParkingIndicator';
+import { showParking } from '../actions';
+import { Colors } from '../utils/color';
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: 'space-between'
+    alignItems: 'center',
+    backgroundColor: Colors.WHITE,
+    borderBottomWidth: 1,
+    borderColor: Colors.LIGHT_GREY,
+    flexDirection: 'row',
+    height: 44,
+    justifyContent: 'space-between',
+    padding: 5,
+    position: 'relative',
   },
   titleStyle: {
     fontSize: 18,
     paddingLeft: 15,
   },
-  availableStyle: {
-    fontSize: 15,
-    paddingRight: 15,
-  },
 });
 
-export default ParkingListItem;
+class ParkingListItem extends React.Component {
+  onRowPress = () => {
+    this.props.showParking(this.props.parking);
+  }
+
+  render() {
+    const { name, parkingStatus } = this.props.parking;
+
+    return (
+      <TouchableWithoutFeedback onPress={this.onRowPress}>
+        <View style={styles.container}>
+          <Text style={styles.titleStyle}>
+            {name}
+          </Text>
+          <ParkingIndicator parkingStatus={parkingStatus} />
+        </View>
+      </TouchableWithoutFeedback>
+    );
+  }
+}
+
+export default connect(null, { showParking })(ParkingListItem);

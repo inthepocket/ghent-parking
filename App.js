@@ -1,26 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import reducers from './src/reducers';
-import { Header } from './src/components/common';
-import ParkingList from './src/components/ParkingList';
+import { createStore, applyMiddleware } from 'redux';
 
+import AppReducer from './src/reducers';
+import { middleware } from './src/utils/redux';
+import { startFirebase, stopFirebase } from './src/utils/firebase';
+import AppWithNavigationState from './src/navigators/AppNavigator';
+
+const store = createStore(
+  AppReducer,
+  applyMiddleware(middleware),
+);
 export default class App extends React.Component {
+  componentWillMount() {
+    startFirebase(store);
+  }
+  componentWillUnmount() {
+    stopFirebase();
+  }
   render() {
     return (
-      <Provider store={createStore(reducers)}>
-        <View style={styles.container}>
-          <Header headerText="Parkings" />
-          <ParkingList />
-        </View>
-    </Provider>
+      <Provider store={store}>
+        <AppWithNavigationState />
+      </Provider>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});

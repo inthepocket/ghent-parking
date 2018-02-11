@@ -1,0 +1,66 @@
+{
+  "extends": "airbnb",
+  "plugins": [
+    "babel",
+    "react",
+    "react-native",
+  ],
+  "env": {
+    "es6": true,
+    "jest": true,
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "modules": true,
+      "jsx": true,
+      "spread": true,
+    }
+  },
+  "rules": {
+    "no-console": ["warn", { "allow": ["warn", "error", "info"] }],
+    "generator-star-spacing": "warn",
+    "object-shorthand": "warn",
+    "no-await-in-loop": "warn",
+    "max-len": ["warn", { "ignoreComments": true, "ignoreStrings": true, "tabWidth": 2, "code": 160 }],
+    "class-methods-use-this": "off",
+    "no-unused-vars": ["error", { "args": "none" }],
+    "no-multiple-empty-lines": ["error", { "max": 1 }],
+    "no-underscore-dangle": ["error", { "allow": ["_items"] }],
+
+    "jsx-a11y/href-no-hash": "off",
+    "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
+    "import/prefer-default-export": "off",
+
+    "import/no-unresolved": ["error", { "ignore": ["react", "react-native", "prop-types"] }],
+    "import/no-extraneous-dependencies": ["error", { "peerDependencies": true }],
+    "import/extensions": "off",
+
+    "babel/object-curly-spacing": "off",
+    "babel/arrow-parens": "off",
+
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+    "react/jsx-first-prop-new-line": "warn",
+    "react/prop-types": "off",
+    "react/prefer-stateless-function": "off",
+
+    "react-native/no-unused-styles": "warn",
+    "react-native/split-platform-components": "error",
+    "react-native/no-color-literals": "warn",
+    "react-native/no-inline-styles": "warn",
+  },
+  "globals": {
+    "fetch": false,
+    "alert": false,
+    "Expo": false
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".android.js", ".ios.js"],
+      }
+    }
+  }
+}

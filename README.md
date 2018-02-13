@@ -1,4 +1,6 @@
 # Parking App
+[![Build Status](https://travis-ci.org/inthepocket/ghent-parking.svg?branch=master)](https://travis-ci.org/inthepocket/ghent-parking)
+
 This React Native app is meant to be used for several workshops. It is a small,
 but fully functional app, that displays the availabilities of parkings in the
 center of the city of Ghent.
@@ -21,6 +23,20 @@ https://datatank.stad.gent/4/mobiliteit/bezettingparkingsrealtime
 1. Run `yarn install`.
 2. Test the app (via the [Expo](https://expo.io/) app): `yarn start`. (Or use a simulator, by running `yarn run ios` or `yarn run android`).
 
+## Tests
+This project uses [Jest](https://facebook.github.io/jest/) to perform unit testing. Tests
+can be executed by issuing `yarn test`.
+
+## ESLint
+[ESLint](https://eslint.org/) is used for static code analysis. Eslint nicely integrates
+with editors as Atom or Visual Studio Code. Running the linter manually can be done
+by issuing `yarn run lint`.
+
+## Travis CI setup
+Continuous integration, including static code analysis and automated unit testing, can
+be setup using [Travis CI](https://travis-ci.org). Simply sign-in with your Github
+account and enable builds for your forked Github repository.
+
 ## Firebase setup
 The Firebase setup actually uses 2 components:
 * The app will read the database and reflect any changes in real-time.
@@ -31,21 +47,20 @@ In order to use the application with Firebase, please follow these steps:
 1. Create a new [Firebase project](https://console.firebase.google.com)
 2. Create a new **Realtime Database**
 3. In the `rules` tab, specify these rules:
-```
-{
-  "rules": {
-    ".read": true,
-    ".write": "auth != null"
-  }
-}
-```
-  This will make the database readable for anyone that has access
-  to it, but requires users to be authenticated in order to write.
+   ```
+    {
+      "rules": {
+        ".read": true,
+        ".write": "auth != null"
+      }
+    }
+   ```
+   This will make the database readable for anyone that has access
+   to it, but requires users to be authenticated in order to write.
 4. Go to **Authentication** and add a user with the following credentials:
     - email: `demo@inthepocket.com`
     - password: `firebase`
-
-  This account will be used by the import script to authenticate itself.
+   This account will be used by the import script to authenticate itself.
 5. Now go to **Project Settings** and select the option to add a webapp to Firebase. Copy these settings over to the `config/firebase.json` file.
 6. Run `yarn run firebase`. This command will execute the import script (located at `scripts/pushDataToFirebase`).
 7. If that succeeds, start the app by simply running `yarn start`

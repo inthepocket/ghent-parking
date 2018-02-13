@@ -8,7 +8,7 @@ import { PARKING_SHOW } from '../actions/types';
 const firstAction = AppNavigator.router.getActionForPathAndParams(HomeRoute);
 const initialNavState = AppNavigator.router.getStateForAction(firstAction);
 
-export default function NavigationReducer(state = initialNavState, action) {
+export default function navigationReducer(state = initialNavState, action) {
   let nextState;
   switch (action.type) {
     case PARKING_SHOW:

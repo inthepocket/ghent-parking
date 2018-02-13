@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: Colors.WHITE,
     borderBottomWidth: 1,
-    borderColor: Colors.LIGHT_GREY,
+    borderColor: Colors.GREY_BRIGHT,
     flexDirection: 'row',
     height: 44,
     justifyContent: 'space-between',
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
 });
 
-class ParkingListItem extends React.Component {
+export class ParkingListItem extends React.Component {
   onRowPress = () => {
     this.props.showParking(this.props.parking);
   }

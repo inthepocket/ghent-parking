@@ -5,7 +5,7 @@ import { Colors } from '../utils/color';
 
 const styles = StyleSheet.create({
   availableStyle: {
-    backgroundColor: Colors.LIGHT_GREY,
+    backgroundColor: Colors.GREY_BRIGHT,
     fontSize: 18,
     marginRight: 10,
     padding: 6,

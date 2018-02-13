@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export class ParkingListItem extends React.Component {
+export class ParkingListItemImpl extends React.Component {
   onRowPress = () => {
     this.props.showParking(this.props.parking);
   }
@@ -45,4 +45,4 @@ export class ParkingListItem extends React.Component {
   }
 }
 
-export default connect(null, { showParking })(ParkingListItem);
+export default connect(null, { showParking })(ParkingListItemImpl);

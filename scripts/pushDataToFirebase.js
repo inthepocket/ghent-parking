@@ -1,3 +1,4 @@
+/* eslint-disable */
 const https = require('https');
 const firebase = require('firebase');
 

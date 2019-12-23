@@ -1,5 +1,5 @@
 # Parking App
-[![Build Status](https://travis-ci.org/inthepocket/ghent-parking.svg?branch=master)](https://travis-ci.org/inthepocket/ghent-parking)
+[![Build Status](https://travis-ci.org/inthepocket/ghent-parking.svg?branch=master)](https://travis-ci.org/inthepocket/ghent-parking) [![Greenkeeper badge](https://badges.greenkeeper.io/inthepocket/ghent-parking.svg)](https://greenkeeper.io/)
 
 This React Native app is meant to be used for several workshops. It is a small,
 but fully functional app, that displays the availabilities of parkings in the
